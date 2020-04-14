@@ -62,9 +62,11 @@ public class ProductDAO {
 					break;
 				}
 				arTemp = line.split(",");
+				//새로운 상품 중복검사
 				if (Integer.parseInt(arTemp[0]) == num) {
 					if (idx == 0) {
 						if (check_duplicate_num(Integer.parseInt(new_data.split(",")[0]))) {
+							//중복이 없을 때 들어옴
 							arTemp[0] = new_data.split(",")[0];
 							arTemp[1] = new_data.split(",")[1];
 							result = 1;
@@ -75,6 +77,7 @@ public class ProductDAO {
 						arTemp[++idx] = new_data;
 					}
 					for (int i = 0; i < arTemp.length; i++) {
+						//쓰기위한 구분문자 작업
 						temp += arTemp[i];
 						temp += i == arTemp.length - 1 ? "\n" : ",";
 					}
@@ -82,6 +85,7 @@ public class ProductDAO {
 				}
 				temp += line;
 			}
+			//수정 성공시 파일 쓰기
 			if(result ==1) {
 				BufferedWriter bw = conn.connect_file_for_writing(FILE_NAME);
 				bw.write(temp);

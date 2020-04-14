@@ -8,7 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class Connection {
-
+	//file 입출력을 위한 클래스
 	public BufferedReader connect_file_for_reading(String fileName) throws FileNotFoundException, IOException {
 		return new BufferedReader(new FileReader(fileName));
 	}
